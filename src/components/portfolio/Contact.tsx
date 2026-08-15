@@ -46,20 +46,59 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out with a supernova speed!",
-    });
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
+    if (!accessKey) {
+      setIsSubmitting(false);
+      toast({
+        title: "Contact form not configured",
+        description: "Please email me directly at sakthivel24498@gmail.com",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Failed to send message');
+      }
+
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent!",
+        description: "Thanks for reaching out — I'll get back to you soon!",
+      });
+
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: '', email: '', message: '' });
+      }, 3000);
+    } catch {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or email me at sakthivel24498@gmail.com",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -183,7 +222,7 @@ export const Contact = () => {
                     onChange={handleChange}
                     required
                     className="relative w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:border-transparent focus:ring-0 transition-colors text-foreground placeholder:text-muted-foreground"
-                    placeholder="John Doe"
+                    placeholder="Please enter your name"
                   />
                 </div>
               </div>
@@ -202,7 +241,7 @@ export const Contact = () => {
                     onChange={handleChange}
                     required
                     className="relative w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:border-transparent focus:ring-0 transition-colors text-foreground placeholder:text-muted-foreground"
-                    placeholder="john@company.com"
+                    placeholder="Please enter your email"
                   />
                 </div>
               </div>
@@ -221,7 +260,7 @@ export const Contact = () => {
                     required
                     rows={5}
                     className="relative w-full px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:border-transparent focus:ring-0 transition-colors text-foreground placeholder:text-muted-foreground resize-none"
-                    placeholder="Tell me about your project..."
+                    placeholder="Please share your message..."
                   />
                 </div>
               </div>
