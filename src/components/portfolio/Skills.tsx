@@ -4,25 +4,24 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 const skillCategories = [
   {
-    name: 'Frontend Engineering',
+    name: 'Frontend',
     color: 'from-blue-500 to-cyan-400',
     skills: [
-      { name: 'React', level: 95 },
+      { name: 'React / Next.js', level: 95 },
       { name: 'TypeScript', level: 90 },
-      { name: 'JavaScript', level: 95 },
       { name: 'Redux', level: 88 },
-      { name: 'Ant Design', level: 85 },
       { name: 'Tailwind CSS', level: 90 },
+      { name: 'Ant Design', level: 85 },
     ],
   },
   {
     name: 'Architecture',
     color: 'from-purple-500 to-pink-400',
     skills: [
-      { name: 'Microfrontend', level: 92 },
-      { name: 'Module Federation', level: 88 },
-      { name: 'Monorepo', level: 85 },
-      { name: 'Design Systems', level: 90 },
+      { name: 'Module Federation', level: 92 },
+      { name: 'Microservices', level: 88 },
+      { name: 'Event-Driven (Kafka)', level: 85 },
+      { name: 'Micro-Frontend', level: 92 },
       { name: 'Performance', level: 88 },
     ],
   },
@@ -30,21 +29,22 @@ const skillCategories = [
     name: 'Backend & APIs',
     color: 'from-green-500 to-emerald-400',
     skills: [
-      { name: 'Node.js', level: 82 },
-      { name: 'Express', level: 80 },
-      { name: 'REST APIs', level: 88 },
-      { name: 'GraphQL', level: 75 },
-      { name: 'MongoDB', level: 78 },
+      { name: 'Node.js / Fastify', level: 88 },
+      { name: 'Spring Boot', level: 85 },
+      { name: 'REST / GraphQL', level: 88 },
+      { name: 'MySQL / MongoDB', level: 85 },
+      { name: 'Python', level: 80 },
     ],
   },
   {
-    name: 'Security & Auth',
+    name: 'Cloud & Security',
     color: 'from-orange-500 to-amber-400',
     skills: [
-      { name: 'Keycloak', level: 85 },
-      { name: 'RBAC', level: 88 },
-      { name: 'JWT', level: 85 },
-      { name: 'OAuth 2.0', level: 82 },
+      { name: 'AWS', level: 85 },
+      { name: 'Docker / Kubernetes', level: 82 },
+      { name: 'Keycloak / JWT', level: 85 },
+      { name: 'CI/CD (Jenkins)', level: 80 },
+      { name: 'RBAC / OAuth', level: 85 },
     ],
   },
 ];
@@ -197,7 +197,7 @@ export const Skills = () => {
         >
           <p className="text-muted-foreground text-sm mb-4">Also experienced with</p>
           <div className="flex flex-wrap justify-center gap-2">
-            {['Git', 'Docker', 'AWS', 'CI/CD', 'Jest', 'Webpack', 'Vite', 'Figma', 'Agile', 'Scrum'].map((skill) => (
+            {['Java', 'Redis', 'Prisma', 'Hibernate', 'OpenShift', 'GCP', 'Git', 'Agile', 'Cursor', 'Copilot'].map((skill) => (
               <motion.span
                 key={skill}
                 whileHover={{ scale: 1.05, backgroundColor: 'hsl(var(--primary) / 0.2)' }}

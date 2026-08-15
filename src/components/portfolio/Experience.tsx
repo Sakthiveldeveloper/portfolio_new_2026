@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
@@ -8,40 +8,38 @@ const experiences = [
     company: 'Photon Interactive',
     role: 'Senior Software Engineer',
     period: 'Sep 2025 - Present',
-    location: 'Bengaluru, India',
+    location: 'Bangalore, India',
     type: 'Full-time',
-    description: 'Leading end-to-end development of Tenetic, a B2B AI-powered admin platform. Owning both frontend and backend architecture with a focus on consumers behavior tracking.',
+    description: 'Lead an 8-member cross-functional team building Tenetic — a geography-based advertisement planning platform with AI-driven recommendations.',
     responsibilities: [
-      'Designed and implemented a scalable 3-layer backend architecture',
-      'Integrated AWS S3 for AI generated PPT storage and FusionAuth for authentication',
-      'Built a hybrid data strategy using MongoDB (AI data) and MySQL (Transactional)',
-      'Resolved critical development and release-time issues across FE & BE',
-      'Coordinated with cross-functional teams to ensure stable deployments',
+      'Own frontend architecture; reduced open production bugs from 450 to 0',
+      'Build Node.js/Fastify APIs with MySQL and MongoDB; integrate Python recommendation logic',
+      'Implement AWS S3 for secure storage and data pipeline ingestion',
+      'Collaborate with QA, BA, Scrum Master, and LLM/Python AI team on sprint delivery',
     ],
-    technologies: ['React', 'Node.js', 'AWS S3', 'MongoDB', 'MySQL', 'Databricks'],
+    technologies: ['Next.js', 'Node.js', 'Fastify', 'Python', 'MySQL', 'MongoDB', 'AWS'],
     achievements: [
-      { metric: '100%', description: 'On-time delivery' },
-      { metric: 'AI', description: 'Powered Workflow' },
+      { metric: '450→0', description: 'Production bugs' },
+      { metric: '8', description: 'Team members led' },
     ],
   },
   {
-    company: 'Kaaylabs',
+    company: 'Kaay Labs',
     role: 'Associate Software Engineer',
     period: 'May 2022 - Aug 2025',
     location: 'Chennai, India',
     type: 'Full-time',
-    description: 'Developed and maintained large-scale web applications for stock market platforms and data collection workflows. Focused on migration and performance.',
+    description: 'Led development on enterprise admin platforms — Pie Factory and Mouser Electronics — across pricing, data processing, and workflow management.',
     responsibilities: [
-      'Migrated applications from Ant Design v3 to v8',
-      'Resolved critical production issues in microfrontend architecture',
-      'Addressed module federation challenges minimizing disruptions',
-      'Collaborated with senior team to manage production incidents',
-      'Ensured cross-module compatibility in complex systems',
+      'Architected Module Federation micro-frontends with a 15-member cross-functional team',
+      'Led 5-member team on Pie Factory POC with dynamic charts and export functionality',
+      'Optimized API performance for 100K+ row Excel datasets in production',
+      'Migrated legacy UI from Ant Design v3 to v8; primary escalation for production support',
     ],
-    technologies: ['React', 'Ant Design', 'Module Federation', 'Microfrontends'],
+    technologies: ['React', 'Spring Boot', 'Module Federation', 'Kafka', 'Keycloak', 'Ant Design'],
     achievements: [
-      { metric: 'Migration', description: 'AntD v3 to v8' },
-      { metric: 'fed', description: 'Module Federation' },
+      { metric: '100K+', description: 'Row datasets' },
+      { metric: 'MFE', description: 'Module Federation' },
     ],
   },
 ];
@@ -64,8 +62,6 @@ const ExperienceCard = ({
       transition={{ duration: 0.6, delay: index * 0.2 }}
       className="relative pl-8 md:pl-12"
     >
-      {/* Timeline line */}
-      {/* Timeline line - Data Stream Effect */}
       <div className="absolute left-0 top-0 bottom-0 w-[2px] overflow-hidden">
         <div className="absolute inset-0 bg-muted/20" />
         <motion.div 
@@ -75,7 +71,6 @@ const ExperienceCard = ({
         />
       </div>
       
-      {/* Timeline dot */}
       <motion.div
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : {}}
@@ -83,9 +78,7 @@ const ExperienceCard = ({
         className="absolute left-0 top-2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-background"
       />
 
-      {/* Card */}
       <div className="glass-card p-6 md:p-8 ml-4">
-        {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
           <div>
             <h3 className="text-2xl font-display font-bold">{experience.role}</h3>
@@ -106,10 +99,8 @@ const ExperienceCard = ({
           </div>
         </div>
 
-        {/* Description */}
         <p className="text-muted-foreground mb-6">{experience.description}</p>
 
-        {/* Responsibilities */}
         <div className="mb-6">
           <h4 className="text-sm font-medium text-foreground mb-3">Key Responsibilities</h4>
           <ul className="space-y-2">
@@ -128,7 +119,6 @@ const ExperienceCard = ({
           </ul>
         </div>
 
-        {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-6">
           {experience.technologies.map((tech) => (
             <span
@@ -140,7 +130,6 @@ const ExperienceCard = ({
           ))}
         </div>
 
-        {/* Achievements */}
         <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
           {experience.achievements.map((achievement, i) => (
             <motion.div
@@ -164,18 +153,12 @@ export const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   return (
     <section id="experience" ref={containerRef} className="py-32 px-6 relative overflow-hidden">
-      {/* Background */}
       <div className="absolute top-1/3 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -translate-x-1/2" />
 
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <motion.div
           ref={ref}
           variants={staggerContainer}
@@ -199,12 +182,11 @@ export const Experience = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg"
           >
-            A journey of growth, learning, and delivering impactful solutions 
-            at scale.
+            Delivering enterprise platforms from greenfield to production 
+            with global cross-functional teams.
           </motion.p>
         </motion.div>
 
-        {/* Timeline */}
         <div className="space-y-12">
           {experiences.map((experience, index) => (
             <ExperienceCard key={experience.company} experience={experience} index={index} />

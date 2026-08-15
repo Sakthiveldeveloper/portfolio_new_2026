@@ -7,8 +7,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 
 const roles = [
   "Senior Full Stack Engineer",
-  "Senior Frontend Engineer",
-  "Microfrontend Architect", 
+  "Module Federation Architect",
+  "Microservices Engineer",
   "Problem Solver"
 ];
 
@@ -110,9 +110,8 @@ export const Hero = () => {
           variants={fadeInUp}
           className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
         >
-          I build <span className="text-foreground font-medium">scalable systems</span>, 
-          not just screens. Architecting enterprise-grade applications that handle 
-          complexity with elegance.
+          I build <span className="text-foreground font-medium">enterprise-grade systems</span> across 
+          Java/Spring Boot and MERN — from micro-frontend architecture to AI-driven platforms at scale.
         </motion.p>
 
         {/* CTAs */}
@@ -127,7 +126,7 @@ export const Hero = () => {
             </span>
           </MagneticButton>
           
-          <MagneticButton href="#contact">
+          <MagneticButton href="/Resume.pdf" download="Sakthivel_A_Resume.pdf">
              <span className="glass-button-secondary flex items-center gap-2">
               <Download className="w-4 h-4" />
               Download Resume

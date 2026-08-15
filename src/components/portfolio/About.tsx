@@ -6,39 +6,39 @@ import { Briefcase, GraduationCap, Award, Code2 } from 'lucide-react';
 const timeline = [
   {
     year: '2019',
-    title: 'Started Journey',
-    subtitle: 'Computer Science Graduate',
-    description: 'Completed B.Tech and dove headfirst into frontend development, fascinated by the intersection of design and engineering.',
+    title: 'Anna University',
+    subtitle: 'B.E. Computer Science',
+    description: 'Graduated with a Bachelor of Engineering in CSE, building the foundation for full stack enterprise development.',
     icon: GraduationCap,
   },
   {
-    year: '2020',
-    title: 'Kaaylabs',
-    subtitle: 'Software Engineer',
-    description: 'Built my foundation working on large-scale web applications. Learned the importance of clean architecture and migration strategies.',
+    year: '2022',
+    title: 'Kaay Labs',
+    subtitle: 'Associate Software Engineer',
+    description: 'Led teams on Pie Factory and Mouser Electronics — Module Federation, Ant Design migrations, and 100K+ row data handling.',
     icon: Code2,
   },
   {
     year: '2025',
     title: 'Photon Interactive',
     subtitle: 'Senior Software Engineer',
-    description: 'Stepped into a leadership role, architecting AI-powered solutions and microfrontend systems for enterprise clients.',
+    description: 'Leading an 8-member team on Tenetic — geography-based ad planning with Node.js, Python AI, and AWS.',
     icon: Briefcase,
   },
   {
     year: 'Now',
-    title: 'Building the Future',
-    subtitle: 'Scaling Impact',
-    description: 'Leading architecture decisions, driving AI integration, and building systems that serve thousands of users.',
+    title: 'Scaling Impact',
+    subtitle: 'Full Stack Leadership',
+    description: 'Delivering greenfield products to production — micro-frontends, microservices, and AI-driven platforms for global teams.',
     icon: Award,
   },
 ];
 
 const stats = [
-  { value: '5+', label: 'Years Experience' },
-  { value: '10+', label: 'Production Apps' },
-  { value: '40%', label: 'Fewer Prod Issues' },
-  { value: '25%', label: 'Faster Load Times' },
+  { value: '4+', label: 'Years Experience' },
+  { value: '450→0', label: 'Prod Bugs Fixed' },
+  { value: '100K+', label: 'Row Datasets' },
+  { value: '8', label: 'Team Members Led' },
 ];
 
 const TimelineItem = ({ 
@@ -180,8 +180,8 @@ export const About = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg"
           >
-            From curious graduate to senior engineer — a story of constant learning, 
-            ownership, and building systems that matter.
+            From Anna University graduate to senior engineer — building enterprise platforms 
+            across Java/Spring Boot and MERN with global teams.
           </motion.p>
         </motion.div>
 

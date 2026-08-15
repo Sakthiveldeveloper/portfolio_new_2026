@@ -6,9 +6,8 @@ import { useToast } from '@/hooks/use-toast';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 
 const socialLinks = [
-  { name: 'GitHub', icon: Github, href: 'https://github.com', color: 'hover:text-white' },
-  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com', color: 'hover:text-blue-400' },
-  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com', color: 'hover:text-sky-400' },
+  { name: 'GitHub', icon: Github, href: 'https://github.com/Sakthiveldeveloper', color: 'hover:text-white' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sakthi-dev', color: 'hover:text-blue-400' },
   { name: 'Email', icon: Mail, href: 'mailto:sakthivel24498@gmail.com', color: 'hover:text-primary' },
 ];
 
@@ -23,8 +22,8 @@ const contactDetails = [
   { 
     icon: MapPin, 
     label: 'Location', 
-    value: 'Bangalore & Chennai, India', 
-    href: 'https://maps.google.com/?q=Bangalore+%26+Chennai,India',
+    value: 'Bangalore, India',
+    href: 'https://maps.google.com/?q=Bangalore,India',
     color: 'text-purple-400'
   },
 ];

@@ -6,9 +6,10 @@ interface MagneticButtonProps {
   className?: string;
   onClick?: () => void;
   href?: string;
+  download?: string;
 }
 
-export const MagneticButton = ({ children, className = "", onClick, href }: MagneticButtonProps) => {
+export const MagneticButton = ({ children, className = "", onClick, href, download }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -47,7 +48,7 @@ export const MagneticButton = ({ children, className = "", onClick, href }: Magn
 
   if (href) {
     return (
-      <a href={href} onClick={onClick}>
+      <a href={href} download={download} onClick={onClick}>
         {Content}
       </a>
     );
