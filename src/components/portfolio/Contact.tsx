@@ -29,56 +29,6 @@ const contactDetails = [
   },
 ];
 
-const FORM_NAME = 'portfolio-contact';
-
-const isDeployedSite = () =>
-  typeof window !== 'undefined' &&
-  !window.location.hostname.includes('localhost') &&
-  !window.location.hostname.includes('127.0.0.1');
-
-const submitToNetlify = async (data: { name: string; email: string; message: string }) => {
-  const response = await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams({
-      'form-name': FORM_NAME,
-      name: data.name,
-      email: data.email,
-      message: data.message,
-    }).toString(),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to send message');
-  }
-};
-
-const submitToWeb3Forms = async (
-  data: { name: string; email: string; message: string },
-  accessKey: string,
-) => {
-  const response = await fetch('https://api.web3forms.com/submit', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-    },
-    body: JSON.stringify({
-      access_key: accessKey,
-      name: data.name,
-      email: data.email,
-      message: data.message,
-      subject: `Portfolio message from ${data.name}`,
-    }),
-  });
-
-  const result = await response.json();
-
-  if (!response.ok || !result.success) {
-    throw new Error(result.message || 'Failed to send message');
-  }
-};
-
 export const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -97,9 +47,8 @@ export const Contact = () => {
     setIsSubmitting(true);
 
     const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
-    const useNetlifyForms = isDeployedSite();
 
-    if (!useNetlifyForms && !accessKey) {
+    if (!accessKey) {
       setIsSubmitting(false);
       toast({
         title: "Contact form not configured",
@@ -110,10 +59,25 @@ export const Contact = () => {
     }
 
     try {
-      if (useNetlifyForms) {
-        await submitToNetlify(formData);
-      } else {
-        await submitToWeb3Forms(formData, accessKey);
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Failed to send message');
       }
 
       setIsSubmitted(true);
