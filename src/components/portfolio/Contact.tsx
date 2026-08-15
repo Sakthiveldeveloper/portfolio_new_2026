@@ -132,7 +132,7 @@ export const Contact = () => {
             variants={fadeInUp}
             className="section-heading mt-4"
           >
-            Let's Build Something <span className="text-gradient">Supernova</span>
+            Let's Build Something <span className="text-gradient">Together</span>
           </motion.h2>
           <motion.p
             variants={fadeInUp}
