@@ -5,7 +5,7 @@ import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
 const experiences = [
   {
-    company: 'Virtusa',
+    company: 'BT Group',
     role: 'Senior Software Engineer',
     period: 'Aug 2026 - Present',
     location: 'Bangalore, India',

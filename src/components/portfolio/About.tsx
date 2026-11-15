@@ -27,7 +27,7 @@ const timeline = [
   },
   {
     year: 'Now',
-    title: 'Virtusa',
+    title: 'BT Group',
     subtitle: 'Senior Software Engineer',
     description: 'Delivering BT International — Spring Boot 3 to 4 migration, PingFederate auth, and AWS production support across global teams.',
     icon: Award,
@@ -180,7 +180,7 @@ export const About = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg"
           >
-            From Anna University graduate to senior engineer at Virtusa — building enterprise
+            From Anna University graduate to senior engineer at BT Group — building enterprise
             platforms across React, Spring Boot, Node.js, and AWS with global teams.
           </motion.p>
         </motion.div>
