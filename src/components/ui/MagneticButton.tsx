@@ -39,8 +39,20 @@ export const MagneticButton = ({ children, className = "", onClick, href, downlo
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ x: mouseX, y: mouseY }}
-      className={`relative inline-block ${className}`}
+      className={`relative inline-block ${onClick && !href ? 'cursor-pointer' : ''} ${className}`}
       onClick={!href ? onClick : undefined}
+      role={!href && onClick ? 'button' : undefined}
+      tabIndex={!href && onClick ? 0 : undefined}
+      onKeyDown={
+        !href && onClick
+          ? (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
     >
       {children}
     </motion.div>

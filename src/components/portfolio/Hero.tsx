@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useMousePosition } from '@/hooks/useMousePosition';
 import { fadeInUp, staggerContainer, letterAnimation } from '@/lib/animations';
 import { FileText, ArrowDown } from 'lucide-react';
 import { ParticleField } from '@/components/ui/ParticleField';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { ResumeRequestModal } from '@/components/portfolio/ResumeRequestModal';
 
 const roles = [
   "Senior Full Stack Engineer",
@@ -61,6 +63,7 @@ const RoleCarousel = () => {
 
 export const Hero = () => {
   const mouse = useMousePosition();
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
@@ -126,13 +129,19 @@ export const Hero = () => {
             </span>
           </MagneticButton>
           
-          <MagneticButton href="/Resume.pdf">
-             <span className="glass-button-secondary flex items-center gap-2">
+          <MagneticButton onClick={() => setIsResumeModalOpen(true)}>
+            <span className="glass-button-secondary flex items-center gap-2">
               <FileText className="w-4 h-4" />
-              View Resume
+              Request Resume
             </span>
           </MagneticButton>
         </motion.div>
+
+        {/* Resume Request Access Modal */}
+        <ResumeRequestModal
+          isOpen={isResumeModalOpen}
+          onClose={() => setIsResumeModalOpen(false)}
+        />
 
         {/* Scroll indicator */}
         <motion.div
