@@ -8,12 +8,16 @@ import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
 import { ScrollProgress } from '@/components/portfolio/ScrollProgress';
 import { DynamicBackground } from '@/components/ui/DynamicBackground';
+import { BackgroundThemeSwitcher } from '@/components/ui/BackgroundThemeSwitcher';
 
 const Index = () => {
   return (
     <div className="relative">
       {/* Configurable Dynamic Background System */}
       <DynamicBackground />
+      
+      {/* Live Interactive Background Theme Switcher */}
+      <BackgroundThemeSwitcher />
       
       {/* Scroll Progress Bar */}
       <ScrollProgress />

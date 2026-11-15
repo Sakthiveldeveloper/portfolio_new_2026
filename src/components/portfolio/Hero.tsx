@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useMousePosition } from '@/hooks/useMousePosition';
 import { fadeInUp, staggerContainer, letterAnimation } from '@/lib/animations';
 import { FileText, ArrowDown } from 'lucide-react';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { ParticleField } from '@/components/ui/ParticleField';
-import { BACKGROUND_CONFIG } from '@/lib/constants';
+import { BackgroundTheme, getInitialBackgroundTheme } from '@/lib/constants';
 import { ResumeRequestModal } from '@/components/portfolio/ResumeRequestModal';
 
 const roles = [
@@ -65,11 +65,22 @@ const RoleCarousel = () => {
 export const Hero = () => {
   const mouse = useMousePosition();
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+  const [bgTheme, setBgTheme] = useState<BackgroundTheme>(getInitialBackgroundTheme());
+
+  useEffect(() => {
+    const handleThemeChange = (e: CustomEvent<BackgroundTheme>) => {
+      if (e.detail) setBgTheme(e.detail);
+    };
+    window.addEventListener('change_portfolio_theme', handleThemeChange as EventListener);
+    return () => {
+      window.removeEventListener('change_portfolio_theme', handleThemeChange as EventListener);
+    };
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
       {/* ParticleField active when using classic stars background */}
-      {BACKGROUND_CONFIG.theme === 'stars' && <ParticleField />}
+      {bgTheme === 'stars' && <ParticleField />}
       
       <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent to-background/80" />
 
