@@ -1,7 +1,8 @@
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Building2, Calendar, MapPin, ChevronRight, Sparkles } from 'lucide-react';
+import { ExperienceStoryModal } from '@/components/portfolio/ExperienceStoryModal';
 
 const experiences = [
   {
@@ -65,10 +66,12 @@ const experiences = [
 
 const ExperienceCard = ({ 
   experience, 
-  index 
+  index,
+  onOpenStory,
 }: { 
   experience: typeof experiences[0]; 
   index: number;
+  onOpenStory: (company: string) => void;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -163,6 +166,19 @@ const ExperienceCard = ({
             </motion.div>
           ))}
         </div>
+
+        {/* Story & Culture Trigger Button */}
+        <div className="pt-5 mt-4 border-t border-white/5 flex items-center justify-between">
+          <button
+            type="button"
+            onClick={() => onOpenStory(experience.company)}
+            className="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 text-xs sm:text-sm font-medium transition-all shadow-sm active:scale-[0.98]"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-primary group-hover:rotate-12 transition-transform" />
+            <span>Read Office Story & Life</span>
+            <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
       </div>
     </motion.div>
   );
@@ -172,6 +188,14 @@ export const Experience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const containerRef = useRef(null);
+
+  const [isStoryOpen, setIsStoryOpen] = useState(false);
+  const [selectedCompany, setSelectedCompany] = useState('BT Group');
+
+  const handleOpenStory = (company: string) => {
+    setSelectedCompany(company);
+    setIsStoryOpen(true);
+  };
 
   return (
     <section id="experience" ref={containerRef} className="py-32 px-6 relative overflow-hidden">
@@ -208,9 +232,22 @@ export const Experience = () => {
 
         <div className="space-y-12">
           {experiences.map((experience, index) => (
-            <ExperienceCard key={experience.company} experience={experience} index={index} />
+            <ExperienceCard
+              key={experience.company}
+              experience={experience}
+              index={index}
+              onOpenStory={handleOpenStory}
+            />
           ))}
         </div>
+
+        {/* Experience Story & Office Life Modal */}
+        <ExperienceStoryModal
+          isOpen={isStoryOpen}
+          onClose={() => setIsStoryOpen(false)}
+          selectedCompany={selectedCompany}
+          onSelectCompany={setSelectedCompany}
+        />
       </div>
     </section>
   );
