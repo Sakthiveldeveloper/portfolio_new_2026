@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useMousePosition } from '@/hooks/useMousePosition';
 import { fadeInUp, staggerContainer, letterAnimation } from '@/lib/animations';
-import { Download, ArrowDown } from 'lucide-react';
+import { FileText, ArrowDown } from 'lucide-react';
 import { ParticleField } from '@/components/ui/ParticleField';
 import { MagneticButton } from '@/components/ui/MagneticButton';
 
@@ -126,10 +126,10 @@ export const Hero = () => {
             </span>
           </MagneticButton>
           
-          <MagneticButton href="/Resume.pdf" download="Sakthivel_A_Resume.pdf">
+          <MagneticButton href="/Resume.pdf">
              <span className="glass-button-secondary flex items-center gap-2">
-              <Download className="w-4 h-4" />
-              Download Resume
+              <FileText className="w-4 h-4" />
+              View Resume
             </span>
           </MagneticButton>
         </motion.div>

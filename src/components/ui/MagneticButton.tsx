@@ -47,14 +47,14 @@ export const MagneticButton = ({ children, className = "", onClick, href, downlo
   );
 
   if (href) {
-    const isExternal = href.startsWith('http');
+    const opensNewTab = href.startsWith('http') || href.endsWith('.pdf');
     return (
       <a
         href={href}
         download={download}
         onClick={onClick}
-        target={isExternal ? '_blank' : undefined}
-        rel={isExternal ? 'noopener noreferrer' : undefined}
+        target={opensNewTab ? '_blank' : undefined}
+        rel={opensNewTab ? 'noopener noreferrer' : undefined}
       >
         {Content}
       </a>
