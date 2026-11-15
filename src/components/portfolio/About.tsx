@@ -15,30 +15,30 @@ const timeline = [
     year: '2022',
     title: 'Kaay Labs',
     subtitle: 'Associate Software Engineer',
-    description: 'Led teams on Pie Factory and Mouser Electronics — Module Federation, Ant Design migrations, and 100K+ row data handling.',
+    description: 'Led teams on Pie Factory and Mouser Electronics — Module Federation, Ant Design migrations, and 100K+ row data handling on AWS.',
     icon: Code2,
   },
   {
     year: '2025',
     title: 'Photon Interactive',
     subtitle: 'Senior Software Engineer',
-    description: 'Leading an 8-member team on Tenetic — geography-based ad planning with Node.js, Python AI, and AWS.',
+    description: 'Led an 8-member team on Tenetic — geography-based ad planning with Node.js, Python AI, and AWS S3.',
     icon: Briefcase,
   },
   {
     year: 'Now',
-    title: 'Scaling Impact',
-    subtitle: 'Full Stack Leadership',
-    description: 'Delivering greenfield products to production — micro-frontends, microservices, and AI-driven platforms for global teams.',
+    title: 'Virtusa',
+    subtitle: 'Senior Software Engineer',
+    description: 'Delivering BT International — Spring Boot 3 to 4 migration, PingFederate auth, and AWS production support across global teams.',
     icon: Award,
   },
 ];
 
 const stats = [
   { value: '4+', label: 'Years Experience' },
+  { value: '5', label: 'SB 3→4 Modules' },
   { value: '450→0', label: 'Prod Bugs Fixed' },
-  { value: '100K+', label: 'Row Datasets' },
-  { value: '8', label: 'Team Members Led' },
+  { value: 'AWS', label: 'Cloud & Production' },
 ];
 
 const TimelineItem = ({ 
@@ -180,8 +180,8 @@ export const About = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg"
           >
-            From Anna University graduate to senior engineer — building enterprise platforms 
-            across Java/Spring Boot and MERN with global teams.
+            From Anna University graduate to senior engineer at Virtusa — building enterprise
+            platforms across React, Spring Boot, Node.js, and AWS with global teams.
           </motion.p>
         </motion.div>
 

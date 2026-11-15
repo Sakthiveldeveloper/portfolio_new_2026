@@ -5,19 +5,38 @@ import { Building2, Calendar, MapPin, ChevronRight } from 'lucide-react';
 
 const experiences = [
   {
-    company: 'Photon Interactive',
+    company: 'Virtusa',
     role: 'Senior Software Engineer',
-    period: 'Sep 2025 - Present',
+    period: 'Aug 2026 - Present',
     location: 'Bangalore, India',
     type: 'Full-time',
-    description: 'Lead an 8-member cross-functional team building Tenetic — a geography-based advertisement planning platform with AI-driven recommendations.',
+    description: 'Full stack on BT International — an enterprise platform delivered by teams across companies and countries. Spring Boot and Node.js APIs, React apps, auth modernization, and AWS production support.',
     responsibilities: [
-      'Own frontend architecture; reduced open production bugs from 450 to 0',
-      'Build Node.js/Fastify APIs with MySQL and MongoDB; integrate Python recommendation logic',
-      'Implement AWS S3 for secure storage and data pipeline ingestion',
-      'Collaborate with QA, BA, Scrum Master, and LLM/Python AI team on sprint delivery',
+      'Design and maintain REST APIs in Spring Boot and Node.js (TypeScript), plus React applications',
+      'Migrated 5 Spring Boot modules from 3.x to 4.x after 6 years on the legacy version, using AI-assisted tests',
+      'Implemented JWT/RBAC auth and PingFederate on the Node.js/TypeScript application',
+      'Use AWS (API Gateway, Lambda, EC2, S3, IAM, CloudWatch) to run the platform, trace slow queries, and resolve production issues',
     ],
-    technologies: ['Next.js', 'Node.js', 'Fastify', 'Python', 'MySQL', 'MongoDB', 'AWS'],
+    technologies: ['Spring Boot 4', 'React', 'Node.js', 'PostgreSQL', 'PingFederate', 'AWS', 'SonarQube'],
+    achievements: [
+      { metric: '5', description: 'SB 3.x → 4.x modules' },
+      { metric: 'Auth', description: 'PingFederate + JWT' },
+    ],
+  },
+  {
+    company: 'Photon Interactive',
+    role: 'Senior Software Engineer',
+    period: 'Sep 2025 - Jun 2026',
+    location: 'Bangalore, India',
+    type: 'Full-time',
+    description: 'Led an 8-member cross-functional team building Tenetic — a geography-based advertisement planning platform with AI-driven recommendations.',
+    responsibilities: [
+      'Owned frontend architecture; reduced open production bugs from 450 to 0',
+      'Built Node.js/Fastify APIs with MySQL and MongoDB; integrated Python recommendation logic',
+      'Implemented AWS S3 for secure storage and data pipeline ingestion',
+      'Collaborated with QA, BA, Scrum Master, and the LLM/Python AI team on sprint delivery',
+    ],
+    technologies: ['Next.js', 'Node.js', 'Fastify', 'Python', 'MySQL', 'MongoDB', 'AWS S3'],
     achievements: [
       { metric: '450→0', description: 'Production bugs' },
       { metric: '8', description: 'Team members led' },
@@ -36,7 +55,7 @@ const experiences = [
       'Optimized API performance for 100K+ row Excel datasets in production',
       'Migrated legacy UI from Ant Design v3 to v8; primary escalation for production support',
     ],
-    technologies: ['React', 'Spring Boot', 'Module Federation', 'Kafka', 'Keycloak', 'Ant Design'],
+    technologies: ['React', 'Spring Boot', 'Module Federation', 'Kafka', 'Keycloak', 'AWS'],
     achievements: [
       { metric: '100K+', description: 'Row datasets' },
       { metric: 'MFE', description: 'Module Federation' },
@@ -182,8 +201,8 @@ export const Experience = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-2xl mx-auto mt-6 text-lg"
           >
-            Delivering enterprise platforms from greenfield to production 
-            with global cross-functional teams.
+            Delivering enterprise platforms from greenfield to production — 
+            Spring Boot, Node.js, React, and AWS across global teams.
           </motion.p>
         </motion.div>
 

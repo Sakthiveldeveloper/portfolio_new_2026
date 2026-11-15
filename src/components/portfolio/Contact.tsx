@@ -1,13 +1,17 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { Send, Github, Linkedin, Twitter, Mail, CheckCircle, Loader2, Phone, MapPin } from 'lucide-react';
+import { Send, Github, Linkedin, Mail, CheckCircle, Loader2, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+
+const WHATSAPP_URL =
+  'https://wa.me/916380350108?text=Hi%20Sakthivel%2C%20I%20came%20across%20your%20portfolio.';
 
 const socialLinks = [
   { name: 'GitHub', icon: Github, href: 'https://github.com/Sakthiveldeveloper', color: 'hover:text-white' },
   { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/sakthi-dev', color: 'hover:text-blue-400' },
+  { name: 'WhatsApp', icon: MessageCircle, href: WHATSAPP_URL, color: 'hover:text-emerald-400' },
   { name: 'Email', icon: Mail, href: 'mailto:sakthivel24498@gmail.com', color: 'hover:text-primary' },
 ];
 
@@ -17,6 +21,13 @@ const contactDetails = [
     label: 'Phone', 
     value: '+91 6380350108', 
     href: 'tel:+916380350108',
+    color: 'text-emerald-400'
+  },
+  { 
+    icon: MessageCircle, 
+    label: 'WhatsApp', 
+    value: 'Chat on WhatsApp', 
+    href: WHATSAPP_URL,
     color: 'text-emerald-400'
   },
   { 
@@ -137,8 +148,8 @@ export const Contact = () => {
             variants={fadeInUp}
             className="text-muted-foreground max-w-xl mx-auto mt-6 text-lg"
           >
-            Looking for a Senior Full Stack Engineer to scale your next big idea?
-            Let's connect and make it happen.
+            Looking for a Senior Full Stack Engineer across React, Spring Boot,
+            Node.js, and AWS? Let's connect.
           </motion.p>
         </motion.div>
 
@@ -151,13 +162,16 @@ export const Contact = () => {
             className="w-full max-w-2xl space-y-8"
           >
             {/* Contact Details Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
                 {contactDetails.map((detail, index) => {
                   const Icon = detail.icon;
+                  const isExternal = detail.href.startsWith('http');
                   return (
                     <motion.a
                       key={detail.label}
                       href={detail.href}
+                      target={isExternal ? '_blank' : undefined}
+                      rel={isExternal ? 'noopener noreferrer' : undefined}
                       initial={{ opacity: 0, y: 20 }}
                       animate={isInView ? { opacity: 1, y: 0 } : {}}
                       transition={{ delay: 0.4 + index * 0.1 }}

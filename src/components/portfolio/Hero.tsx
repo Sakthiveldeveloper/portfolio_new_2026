@@ -7,8 +7,8 @@ import { MagneticButton } from '@/components/ui/MagneticButton';
 
 const roles = [
   "Senior Full Stack Engineer",
-  "Module Federation Architect",
-  "Microservices Engineer",
+  "Spring Boot & AWS",
+  "Micro-Frontend Architect",
   "Problem Solver"
 ];
 
@@ -111,7 +111,7 @@ export const Hero = () => {
           className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           I build <span className="text-foreground font-medium">enterprise-grade systems</span> across 
-          Java/Spring Boot and MERN — from micro-frontend architecture to AI-driven platforms at scale.
+          React, Java (Spring Boot), Node.js, and AWS — from Module Federation to AI-driven platforms.
         </motion.p>
 
         {/* CTAs */}

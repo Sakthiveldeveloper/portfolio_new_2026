@@ -1,17 +1,33 @@
 import { motion, useInView, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
-import { ExternalLink, Github, Zap, Shield, Layers, Database } from 'lucide-react';
+import { Lock, Zap, Shield, Layers, Database } from 'lucide-react';
 
 const projects = [
+  {
+    id: 'bt-international',
+    title: 'BT International',
+    subtitle: 'Enterprise Full Stack & Auth Modernization',
+    description: 'Build and maintain React apps and Spring Boot APIs for a multi-team enterprise platform — Spring Boot 3 to 4 migration, JWT/RBAC, PingFederate, and AWS production support.',
+    problem: 'A 6-year Spring Boot 3 stack and fragmented auth needed a safe upgrade across companies and countries.',
+    solution: 'Migrated 5 modules to Spring Boot 4, documented APIs with Swagger, and rolled out PingFederate plus JWT/RBAC on Node.js/TypeScript.',
+    tech: ['React', 'Spring Boot 4', 'Node.js', 'PostgreSQL', 'PingFederate', 'JWT', 'AWS', 'SonarQube'],
+    metrics: [
+      { value: '5', label: 'SB 4.x Modules' },
+      { value: 'Auth', label: 'PingFederate' },
+      { value: 'AWS', label: 'Prod Support' },
+    ],
+    icon: Lock,
+    gradient: 'from-sky-600 to-indigo-500',
+  },
   {
     id: 'tenetic',
     title: 'Tenetic',
     subtitle: 'Geography-Based Ad Planning',
     description: 'Built a platform recommending optimal ad timing and placement by U.S. state, demographic, holiday, and product — with Python AI logic integrated into a Node.js/Fastify backend.',
     problem: 'Clients needed data-driven ad placement recommendations across complex U.S. geography and demographics.',
-    solution: 'MVC backend with MySQL for campaign data, MongoDB for flexible inputs, and Next.js dashboards with Redux.',
-    tech: ['Next.js', 'Node.js', 'Fastify', 'Python', 'MySQL', 'MongoDB', 'AWS', 'Redux'],
+    solution: 'MVC backend with MySQL for campaign data, MongoDB for flexible inputs, Next.js dashboards, and AWS S3 storage.',
+    tech: ['Next.js', 'Node.js', 'Fastify', 'Python', 'MySQL', 'MongoDB', 'AWS S3', 'Redux'],
     metrics: [
       { value: '450→0', label: 'Prod Bugs' },
       { value: 'AI', label: 'Recommendations' },
@@ -24,10 +40,10 @@ const projects = [
     id: 'mouser',
     title: 'Mouser Electronics',
     subtitle: 'Enterprise Admin & Pricing',
-    description: 'Designed admin portals on Java Spring Boot microservices with Module Federation micro-frontends, Kafka event streaming, and Keycloak security.',
+    description: 'Designed admin portals on Java Spring Boot microservices with Module Federation micro-frontends, Kafka event streaming, Keycloak security, and AWS.',
     problem: 'Complex pricing tools required decoupled microservices with independent frontend deployment.',
     solution: 'Module Federation MFE architecture with Kafka-based async updates and Docker/Kubernetes on OpenShift.',
-    tech: ['Java', 'Spring Boot', 'React', 'Kafka', 'Keycloak', 'Module Federation', 'OpenShift'],
+    tech: ['Java', 'Spring Boot', 'React', 'Kafka', 'Keycloak', 'Module Federation', 'OpenShift', 'AWS'],
     metrics: [
       { value: '15', label: 'Team Members' },
       { value: 'MFE', label: 'Architecture' },
@@ -42,12 +58,12 @@ const projects = [
     subtitle: 'Admin Portal & Analytics',
     description: 'Built admin and client portal with real-time analytics dashboards, report generation, and JWT-based RBAC across admin and client user types.',
     problem: 'Enterprise clients needed unified analytics with efficient data fetching for large historical datasets.',
-    solution: 'React/Next.js frontend with GraphQL APIs, Prisma ORM on MySQL, deployed on AWS.',
-    tech: ['React', 'Next.js', 'Node.js', 'GraphQL', 'Prisma', 'MySQL', 'JWT', 'AWS'],
+    solution: 'React/Next.js frontend with GraphQL APIs, Prisma on MySQL, deployed on AWS (S3, Lambda, EC2, ECS, RDS, CloudWatch).',
+    tech: ['React', 'Next.js', 'GraphQL', 'Prisma', 'MySQL', 'JWT', 'AWS ECS', 'Lambda'],
     metrics: [
       { value: '5', label: 'Team Led' },
       { value: 'POC', label: 'Delivered' },
-      { value: 'RBAC', label: 'Auth Model' },
+      { value: 'AWS', label: 'S3 · ECS · RDS' },
     ],
     icon: Shield,
     gradient: 'from-purple-500 to-pink-400',
@@ -58,12 +74,12 @@ const projects = [
     subtitle: 'Multi-Tenant Admin Panel',
     description: 'Scalable multi-tenant admin system to manage client orders, track progress, and control order lifecycles with Keycloak-secured data isolation.',
     problem: 'Enterprise clients needed isolated tenant environments with flexible configuration per client.',
-    solution: 'React/Node.js with Knex for MySQL, MongoDB for client configs, and Keycloak RBAC.',
-    tech: ['React', 'Node.js', 'MongoDB', 'MySQL', 'Knex', 'Keycloak', 'AWS'],
+    solution: 'React/Node.js with Knex for MySQL, MongoDB for client configs, Keycloak RBAC, and AWS (S3, Lambda, ECS, RDS).',
+    tech: ['React', 'Node.js', 'MongoDB', 'MySQL', 'Knex', 'Keycloak', 'AWS ECS', 'Lambda'],
     metrics: [
       { value: 'Multi', label: 'Tenant' },
       { value: 'RBAC', label: 'Keycloak' },
-      { value: 'Scale', label: 'Enterprise' },
+      { value: 'AWS', label: 'S3 · ECS · RDS' },
     ],
     icon: Database,
     gradient: 'from-green-500 to-emerald-400',

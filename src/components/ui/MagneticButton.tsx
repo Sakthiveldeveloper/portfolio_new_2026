@@ -47,8 +47,15 @@ export const MagneticButton = ({ children, className = "", onClick, href, downlo
   );
 
   if (href) {
+    const isExternal = href.startsWith('http');
     return (
-      <a href={href} download={download} onClick={onClick}>
+      <a
+        href={href}
+        download={download}
+        onClick={onClick}
+        target={isExternal ? '_blank' : undefined}
+        rel={isExternal ? 'noopener noreferrer' : undefined}
+      >
         {Content}
       </a>
     );

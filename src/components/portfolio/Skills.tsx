@@ -30,9 +30,9 @@ const skillCategories = [
     color: 'from-green-500 to-emerald-400',
     skills: [
       { name: 'Node.js / Fastify', level: 88 },
-      { name: 'Spring Boot', level: 85 },
+      { name: 'Spring Boot 4', level: 88 },
       { name: 'REST / GraphQL', level: 88 },
-      { name: 'MySQL / MongoDB', level: 85 },
+      { name: 'PostgreSQL / MySQL', level: 85 },
       { name: 'Python', level: 80 },
     ],
   },
@@ -40,11 +40,11 @@ const skillCategories = [
     name: 'Cloud & Security',
     color: 'from-orange-500 to-amber-400',
     skills: [
-      { name: 'AWS', level: 85 },
+      { name: 'AWS (EC2, Lambda, S3)', level: 88 },
+      { name: 'API Gateway / IAM', level: 85 },
+      { name: 'PingFederate / JWT', level: 85 },
       { name: 'Docker / Kubernetes', level: 82 },
-      { name: 'Keycloak / JWT', level: 85 },
-      { name: 'CI/CD (Jenkins)', level: 80 },
-      { name: 'RBAC / OAuth', level: 85 },
+      { name: 'Terraform / CI/CD', level: 80 },
     ],
   },
 ];
@@ -197,7 +197,7 @@ export const Skills = () => {
         >
           <p className="text-muted-foreground text-sm mb-4">Also experienced with</p>
           <div className="flex flex-wrap justify-center gap-2">
-            {['Java', 'Redis', 'Prisma', 'Hibernate', 'OpenShift', 'GCP', 'Git', 'Agile', 'Cursor', 'Copilot'].map((skill) => (
+            {['Keycloak', 'Swagger', 'SonarQube', 'Cypress', 'Jest', 'Prisma', 'Hibernate', 'OpenShift', 'GCP', 'Cursor'].map((skill) => (
               <motion.span
                 key={skill}
                 whileHover={{ scale: 1.05, backgroundColor: 'hsl(var(--primary) / 0.2)' }}
