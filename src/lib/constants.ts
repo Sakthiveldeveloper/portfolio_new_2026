@@ -15,3 +15,11 @@ export const RESUME_CONFIG = {
   // Contact email
   contactEmail: 'sakthivel24498@gmail.com',
 };
+
+export const BACKGROUND_CONFIG = {
+  // Background style selector:
+  // 'aurora' = Modern Aurora Mesh + Architectural Node Grid (Default)
+  // 'stars'  = Classic Deep Space StarField (with planets & meteors)
+  theme: (import.meta.env.VITE_BACKGROUND_THEME?.toLowerCase() === 'stars' ? 'stars' : 'aurora') as 'aurora' | 'stars',
+};
+

@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useMousePosition } from '@/hooks/useMousePosition';
 import { fadeInUp, staggerContainer, letterAnimation } from '@/lib/animations';
 import { FileText, ArrowDown } from 'lucide-react';
-import { ParticleField } from '@/components/ui/ParticleField';
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { ParticleField } from '@/components/ui/ParticleField';
+import { BACKGROUND_CONFIG } from '@/lib/constants';
 import { ResumeRequestModal } from '@/components/portfolio/ResumeRequestModal';
 
 const roles = [
@@ -67,10 +68,10 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
-      {/* Animated Background */}
-      <ParticleField />
+      {/* ParticleField active when using classic stars background */}
+      {BACKGROUND_CONFIG.theme === 'stars' && <ParticleField />}
       
-      <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent to-background" />
+      <div className="absolute inset-0 -z-10 bg-gradient-radial from-transparent to-background/80" />
 
       {/* Mouse-following spotlight */}
       <motion.div

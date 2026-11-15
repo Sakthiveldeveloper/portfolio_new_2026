@@ -7,14 +7,13 @@ import { Experience } from '@/components/portfolio/Experience';
 import { Contact } from '@/components/portfolio/Contact';
 import { Footer } from '@/components/portfolio/Footer';
 import { ScrollProgress } from '@/components/portfolio/ScrollProgress';
-import { StarField } from '@/components/ui/StarField';
+import { DynamicBackground } from '@/components/ui/DynamicBackground';
 
 const Index = () => {
   return (
     <div className="relative">
-      {/* Background System */}
-      <StarField />
-      <div className="fixed inset-0 -z-30 bg-[#05050A]" /> {/* Deep space base */}
+      {/* Configurable Dynamic Background System */}
+      <DynamicBackground />
       
       {/* Scroll Progress Bar */}
       <ScrollProgress />
